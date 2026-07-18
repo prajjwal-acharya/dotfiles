@@ -1,0 +1,83 @@
+# ── PROMPT LAYOUT ─────────────────────
+# format defines what appears on each line
+# Remove any module name to hide it from prompt
+# Order of variables = order in prompt
+# Available modules: $directory $git_branch $git_status $python
+#                    $cmd_duration $nodejs $java $rust $docker_context
+#
+# CURRENT FORMAT: prajjwal <dir> [branch] git-status (py x.x.x) took Xs
+#                 >
+#
+# To go single line: remove the newline \n between modules
+# To change name: replace "prajjwal" with anything or remove it
+
+format = """
+prajjwal $directory$git_branch$git_status$python$cmd_duration
+$character"""
+
+add_newline = false
+
+# ── DIRECTORY ─────────────────────────
+# truncation_length: how many parent dirs to show (3 = ~/a/b/current)
+# truncate_to_repo = true means it resets depth at git repo root
+[directory]
+style = "bold #7dcfff"
+truncation_length = 3
+truncate_to_repo = true
+format = "[$path]($style) "
+
+# ── GIT BRANCH ────────────────────────
+# symbol = "" means no icon (pure text mode)
+# To add icon back: symbol = " "
+[git_branch]
+symbol = ""
+format = "[\\[[$branch](bold #bb9af7)\\]]($style) "
+style = ""
+
+# ── GIT STATUS ────────────────────────
+# ^ = ahead of remote, v = behind, ! = modified, ? = untracked
+# + = staged, x = deleted, ~ = conflict
+# Customize symbols here to anything you prefer
+[git_status]
+format = "([[$all_status$ahead_behind](bold #f7768e)]($style) )"
+style = ""
+ahead = "^${count}"
+behind = "v${count}"
+modified = "!${count}"
+untracked = "?${count}"
+staged = "+${count}"
+deleted = "x${count}"
+conflicted = "~${count}"
+
+# ── PYTHON ────────────────────────────
+# Shows python version + venv name when in a python project
+# detect_files: which files trigger python module to show
+# Add "Pipfile" or ".python-version" to detect_files if needed
+[python]
+symbol = ""
+format = "[(py $version)(\\($virtualenv\\))](bold #9ece6a) "
+detect_files = ["pyproject.toml", "requirements.txt", ".python-version", "uv.lock"]
+
+# ── COMMAND DURATION ──────────────────
+# min_time in milliseconds — only shows if command took longer than this
+# 2000 = only show if command took > 2 seconds
+# Change to 500 if you want to see duration for quick commands too
+[cmd_duration]
+min_time = 2000
+format = "[took ${duration}](#e0af68) "
+
+# ── PROMPT CHARACTER ──────────────────
+# success_symbol = shown after successful command
+# error_symbol = shown after failed command (non-zero exit code)
+# Common alternatives: ❯ λ $ → ➜
+[character]
+success_symbol = "[>](bold #9ece6a)"
+error_symbol = "[>](bold #f7768e)"
+
+# ── DISABLED MODULES ──────────────────
+# Set disabled = false to re-enable any of these
+[nodejs]
+disabled = true
+
+[java]
+disabled = true
