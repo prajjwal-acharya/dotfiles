@@ -1,0 +1,79 @@
+# ── FONT ──────────────────────────────
+# Change font-family to any Nerd Font installed via: brew search nerd-font
+# Popular alternatives: "FiraCode Nerd Font", "Hack Nerd Font", "MesloLGS NF"
+font-family = "JetBrainsMono Nerd Font"
+
+# Increase for larger screen, 12-16 is typical range
+font-size = 14
+
+# ── TRANSPARENCY ──────────────────────
+# 0.0 = fully transparent, 1.0 = fully opaque
+background-opacity = 0.95
+
+# ── COLORS ────────────────────────────
+# THEME: Tokyo Night
+# To switch themes: replace all hex values below as a group
+# Available presets to try: Catppuccin Mocha, Gruvbox Dark, Nord, Dracula
+# Catppuccin Mocha background = 1e1e2e  foreground = cdd6f4
+# Nord background              = 2e3440  foreground = d8dee9
+# Gruvbox background           = 282828  foreground = ebdbb2
+# Dracula background           = 282a36  foreground = f8f8f2
+background = 1a1b26
+foreground = c0caf5
+cursor-color = c0caf5
+selection-background = 283457
+selection-foreground = c0caf5
+palette = 0=#15161e
+palette = 1=#f7768e
+palette = 2=#9ece6a
+palette = 3=#e0af68
+palette = 4=#7aa2f7
+palette = 5=#bb9af7
+palette = 6=#7dcfff
+palette = 7=#a9b1d6
+palette = 8=#414868
+palette = 9=#f7768e
+palette = 10=#9ece6a
+palette = 11=#e0af68
+palette = 12=#7aa2f7
+palette = 13=#bb9af7
+palette = 14=#7dcfff
+palette = 15=#c0caf5
+
+# ── WINDOW ────────────────────────────
+# Padding around terminal content in pixels
+window-padding-x = 8
+window-padding-y = 8
+
+# true = native macOS titlebar + border + tab bar, false = borderless
+# Native titlebar also gives you: traffic-light buttons, edge/corner resize
+# handles, and a visible tab bar (+ button to add tabs, x to close one)
+window-decoration = true
+
+# ── SHELL ─────────────────────────────
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# ── BEHAVIOUR ─────────────────────────
+# false = no "are you sure?" on close
+confirm-close-surface = false
+quit-after-last-window-closed = true
+copy-on-select = true
+
+# ── KEYBINDS ──────────────────────────
+# Format: keybind = <modifier+key>=<action>
+# Actions: new_tab, close_surface, new_split:right, new_split:down
+# Modifiers: cmd, ctrl, shift, alt
+keybind = cmd+t=new_tab
+keybind = cmd+w=close_surface
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+
+# Tab management already works out of the box (Ghostty defaults, not
+# overridden above) — listed here so they're easy to find:
+#   cmd+t             new tab
+#   cmd+alt+w         close current tab
+#   cmd+1 ... cmd+9   jump to tab N (cmd+9 = last tab)
+#   cmd+shift+[ / ]   previous / next tab
+# Resizing the window and dragging to reorder tabs both work via the
+# native titlebar now that window-decoration = true above.
